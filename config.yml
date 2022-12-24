@@ -42,8 +42,8 @@ params:
         # imageWidth: 120
         # imageHeight: 120
         buttons:
-            - name: Don't click me
-              url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+            - name: My Articles
+              url: /articles/
     mainSections:
       - articles
 
