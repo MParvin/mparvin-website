@@ -26,7 +26,7 @@ params:
 
 
     defaultTheme: auto
-    # disableThemeToggle: true
+    disableThemeToggle: true
     ShowShareButtons: true
     ShowReadingTime: true
     displayFullLangName: true
@@ -49,19 +49,13 @@ params:
 
     socialIcons:
         - name: buymeacoffee
-          url: "https://ko-fi.com/heycharlola"
+          url: "https://buymeacoffee.com/mparvin"
         - name: github
-          url: "https://github.com/charlola"
+          url: "https://github.com/mparvin"
         - name: linkedin
-          url: "https://www.linkedin.com/in/heycharlola/"
-
-      # add more social icons. find more in svg.html file
-      # - name: youtube
-      #   url: yoururl
-      # - name: twitter
-      #   url: yoururl
-      # - name: facebook
-      #   url: yoururl
+          url: "https://www.linkedin.com/in/mparvin/"
+        - name: twitter
+          url: "https://twitter.com/mad__vin"
 
 
     # change favicon in images folder (icon for web tab)
