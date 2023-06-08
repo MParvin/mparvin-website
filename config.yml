@@ -48,8 +48,8 @@ params:
       - articles
 
     socialIcons:
-        - name: buymeacoffee
-          url: "https://buymeacoffee.com/mparvin"
+        # - name: buymeacoffee
+        #   url: "https://buymeacoffee.com/mparvin"
         - name: github
           url: "https://github.com/mparvin"
         - name: linkedin
