@@ -7,9 +7,17 @@ topic: installations
 
 To begin the installation process for NGinx on FreeBSD, follow these steps:
 
-1. Install PECL (Perl Compatible Regular Expressions) by running the following command:
+1. Install PCRE (Perl Compatible Regular Expressions) by running the following command:
 ```shell
-pkg_add pecl
+pkg_add pcre
+```
+
+When we haven't `pcre` on our system, we will get the following error:
+```
+./configure: error: the HTTP rewrite module requires the PCRE library.
+You can either disable the module by using --without-http_rewrite_module
+option, or install the PCRE library into the system, or build the PCRE library
+statically from the source with nginx by using --with-pcre=<path> option.
 ```
 
 2. Proceed to install wget using the following command:
