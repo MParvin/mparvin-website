@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>//localhost:1313/articles/</loc>
+    <lastmod>2025-09-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/diagrams/</loc>
+    <lastmod>2025-09-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/</loc>
+    <lastmod>2025-09-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/mermaid/</loc>
+    <lastmod>2025-09-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/articles/mermaid-demo/</loc>
+    <lastmod>2025-09-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2025-09-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/visualization/</loc>
+    <lastmod>2025-09-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/categories/</loc>
+  </url><url>
+    <loc>//localhost:1313/articles/compile_nginx_freebsd/</loc>
+  </url><url>
+    <loc>//localhost:1313/contact/</loc>
+  </url><url>
+    <loc>//localhost:1313/articles/article/</loc>
+  </url>
+</urlset>

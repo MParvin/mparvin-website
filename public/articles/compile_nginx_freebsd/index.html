@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Compile nginx on FreeBSD | Madvin (Mohammad Parvin)</title>
+<meta name="keywords" content="" />
+<meta name="description" content="By following these steps, you will successfully install and configure NGinx on your FreeBSD system.">
+<meta name="author" content="Madvin">
+<link rel="canonical" href="//localhost:1313/articles/compile_nginx_freebsd/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.6c183503def1ac491340ec11bc99295e962bee702757fc04e8dad92381623f15.css" integrity="sha256-bBg1A97xrEkTQOwRvJkpXpYr7nAnV/wE6NrZI4FiPxU=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.555af97124d54bb1457985dd081b8f5616a48103aafeb30ac89fde835d65aa6c.js" integrity="sha256-VVr5cSTVS7FFeYXdCBuPVhakgQOq/rMKyJ/eg11lqmw="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: "\"default\"",
+    });
+</script>
+<link rel="icon" href="//localhost:1313/images/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/images/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/images/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/images/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/images/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/articles/compile_nginx_freebsd/" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="Madvin (Mohammad Parvin) (Alt + H)">Madvin (Mohammad Parvin)</a>
+            <span class="logo-switches">
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/" title="Home"><span>Home</span></a>
+            </li>
+            <li>
+                <a href="//localhost:1313/articles/" title="Articles">
+                    <span>Articles</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/contact/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="//localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="//localhost:1313/articles/">Articles</a></div>
+    <h1 class="post-title">
+      Compile nginx on FreeBSD
+    </h1>
+    <div class="post-description">
+      By following these steps, you will successfully install and configure NGinx on your FreeBSD system.
+    </div>
+    <div class="post-meta">2 min&amp;nbsp;·&amp;nbsp;Madvin</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#adding-service" aria-label="Adding service">Adding service</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content">
+  <p>To begin the installation process for NGinx on FreeBSD, follow these steps:</p>
+<ol>
+<li>Install PCRE (Perl Compatible Regular Expressions) by running the following command:</li>
+</ol>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">pkg_add pcre</code>
+  </pre>
+</div>
+<p>When we haven&rsquo;t <code>pcre</code> on our system, we will get the following error:</p>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-" data-lang="">./configure: error: the HTTP rewrite module requires the PCRE library.
+You can either disable the module by using --without-http_rewrite_module
+option, or install the PCRE library into the system, or build the PCRE library
+statically from the source with nginx by using --with-pcre=<path> option.</code>
+  </pre>
+</div>
+<ol start="2">
+<li>Proceed to install wget using the following command:</li>
+</ol>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">pkg_add wget</code>
+  </pre>
+</div>
+<ol start="3">
+<li>Download the NGinx source code from the official website. Use the wget command to retrieve the source code file:</li>
+</ol>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">wget https://nginx.org/download/nginx-1.17.0.tar.gz</code>
+  </pre>
+</div>
+<ol start="4">
+<li>Extract the downloaded file using the following command:</li>
+</ol>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">tar xzvf nginx-1.17.0.tar.gz</code>
+  </pre>
+</div>
+<ol start="5">
+<li>Configure the Makefile for NGinx by navigating into the extracted directory and running the configure script with the desired parameters:</li>
+</ol>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">cd nginx-1.17.0
+./configure --sbin-path=/usr/local/sbin/nginx \
+              --conf-path=/etc/nginx/nginx.conf \
+              --pid-path=/var/run/nginx.pid \
+              --with-http_ssl_module \
+              --http-log-path=/var/log/nginx.log \
+              --error-log-path=/var/log/nginx-error.log \
+              --http-fastcgi-temp-path=/var/tmp/fastcgi_tmp \
+              --http-proxy-temp-path=/var/tmp/proxy_tmp \
+              --http-client-body-temp-path=/var/tmp/client_body_temp \
+              --with-http_stub_status_module \
+              --user=www --group=www</code>
+  </pre>
+</div>
+<ol start="6">
+<li>Proceed to compile and install NGinx by running the following commands:</li>
+</ol>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">make && make install</code>
+  </pre>
+</div>
+<ol start="7">
+<li>Once the installation is complete, start NGinx using the following command:</li>
+</ol>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">/usr/local/sbin/nginx</code>
+  </pre>
+</div>
+<p>If you need to restart NGinx at any point, use the following command:</p>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">kill -HUP $(head -1 /var/run/nginx.pid)</code>
+  </pre>
+</div>
+<p>To stop NGinx, execute the following command:</p>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">kill -QUIT $(cat /var/run/nginx.pid)</code>
+  </pre>
+</div>
+<h3 id="adding-service">Adding service</h3>
+<p>To ensure NGinx starts automatically on system boot and can be managed as a service, you can add it to the FreeBSD service management system. Follow these steps:</p>
+<ol>
+<li>Create a file named nginx in the /usr/local/etc/rc.d/ directory. Use the following command to create the file</li>
+</ol>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">vi /usr/local/etc/rc.d/nginx</code>
+  </pre>
+</div>
+<p>and put following content on it:</p>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">#!/bin/sh
+
+# PROVIDE: nginx
+# REQUIRE: LOGIN cleanvar
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name="nginx"
+rcvar="nginx_enable"
+
+start_cmd="${name}_start"
+stop_cmd="${name}_stop"
+reload_cmd="${name}_reload"
+
+load_rc_config $name
+
+# NGinx binary path
+nginx_bin="/usr/local/sbin/nginx"
+
+# NGinx configuration file
+nginx_conf="/etc/nginx/nginx.conf"
+
+# NGinx PID file
+nginx_pid="/var/run/nginx.pid"
+
+command="/usr/sbin/daemon"
+
+command_args="-r -P $nginx_pid $nginx_bin -c $nginx_conf"
+
+nginx_start()
+{
+    ${command} ${command_args}
+}
+
+nginx_stop()
+{
+    kill -QUIT $(cat $nginx_pid)
+}
+
+nginx_reload()
+{
+    kill -HUP $(cat $nginx_pid)
+}
+
+run_rc_command "$1"</code>
+  </pre>
+</div>
+<ol start="2">
+<li>Enable service</li>
+</ol>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">sysrc nginx_enable=YES</code>
+  </pre>
+</div>
+<ol start="3">
+<li>Start nginx</li>
+</ol>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">service nginx start</code>
+  </pre>
+</div>
+<p>To <code>stop</code>, <code>start</code> and <code>reload</code> service use the following commands:</p>
+
+<div class="highlight">
+  <pre tabindex="0" class="chroma">
+    <code class="language-shell" data-lang="shell">service nginx start
+service nginx stop
+service nginx reload</code>
+  </pre>
+</div>
+
+  </div>
+
+  <footer class="post-footer">
+
+<div class="share-buttons">
+
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Compile nginx on FreeBSD on linkedin"
+        href="https://www.linkedin.com/in/heycharlola/">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span> built with ♥ from charlola
+      
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

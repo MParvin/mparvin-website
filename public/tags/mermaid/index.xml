@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mermaid on Madvin (Mohammad Parvin)</title>
+    <link>//localhost:1313/tags/mermaid/</link>
+    <description>Recent content in Mermaid on Madvin (Mohammad Parvin)</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 20 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/mermaid/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mermaid Diagrams Demo</title>
+      <link>//localhost:1313/articles/mermaid-demo/</link>
+      <pubDate>Sat, 20 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/articles/mermaid-demo/</guid>
+      <description>&lt;h1 id=&#34;mermaid-diagrams-in-hugo&#34;&gt;Mermaid Diagrams in Hugo&lt;/h1&gt;&#xA;&lt;p&gt;This article demonstrates how to use Mermaid diagrams in your Hugo website.&lt;/p&gt;&#xA;&lt;h2 id=&#34;flowchart-example&#34;&gt;Flowchart Example&lt;/h2&gt;&#xA;&lt;div class=&#34;mermaid&#34;&gt;&#xA;graph TD&#xA;    A[Start] --&gt; B{Is it working?}&#xA;    B --&gt;|Yes| C[Great!]&#xA;    B --&gt;|No| D[Debug]&#xA;    D --&gt; E[Fix issues]&#xA;    E --&gt; B&#xA;    C --&gt; F[End]&#xA;&lt;/div&gt;&#xA;&#xA;&lt;h2 id=&#34;sequence-diagram-example&#34;&gt;Sequence Diagram Example&lt;/h2&gt;&#xA;&lt;div class=&#34;mermaid&#34;&gt;&#xA;sequenceDiagram&#xA;    participant A as User&#xA;    participant B as Browser&#xA;    participant C as Server&#xA;    participant D as Database&#xA;&#xA;    A-&gt;&gt;B: Enter URL&#xA;    B-&gt;&gt;C: HTTP Request&#xA;    C-&gt;&gt;D: Query Data&#xA;    D--&gt;&gt;C: Return Data&#xA;    C--&gt;&gt;B: HTTP Response&#xA;    B--&gt;&gt;A: Display Page&#xA;&lt;/div&gt;&#xA;&#xA;&lt;h2 id=&#34;gantt-chart-example&#34;&gt;Gantt Chart Example&lt;/h2&gt;&#xA;&lt;div class=&#34;mermaid&#34;&gt;&#xA;gantt&#xA;    title Project Timeline&#xA;    dateFormat  YYYY-MM-DD&#xA;    section Planning&#xA;    Planning Phase    :a1, 2025-01-01, 30d&#xA;    section Development&#xA;    Frontend          :a2, after a1, 45d&#xA;    Backend           :a3, after a1, 60d&#xA;    section Testing&#xA;    Testing Phase     :a4, after a2, 20d&#xA;&lt;/div&gt;&#xA;&#xA;&lt;h2 id=&#34;class-diagram-example&#34;&gt;Class Diagram Example&lt;/h2&gt;&#xA;&lt;div class=&#34;mermaid&#34;&gt;&#xA;classDiagram&#xA;    class Animal {&#xA;        +String name&#xA;        +int age&#xA;        +makeSound()&#xA;    }&#xA;    class Dog {&#xA;        +String breed&#xA;        +bark()&#xA;    }&#xA;    class Cat {&#xA;        +boolean indoor&#xA;        +meow()&#xA;    }&#xA;    Animal &lt;|-- Dog&#xA;    Animal &lt;|-- Cat&#xA;&lt;/div&gt;&#xA;&#xA;&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;&#xA;&lt;p&gt;To create a Mermaid diagram, use the shortcode:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

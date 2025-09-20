@@ -1,6 +1,7 @@
 baseURL: mparvin.me
 title: Madvin (Mohammad Parvin)
-paginate: 5
+pagination:
+  pagerSize: 5
 theme: charlolamode
 
 
@@ -65,6 +66,12 @@ params:
           favicon32x32: "/images/favicon-32x32.png"
           apple_touch_icon: "/images/apple-touch-icon.png"
           safari_pinned_tab: "/images/apple-touch-icon.png"
+
+    # Mermaid configuration
+    mermaid:
+        enable: true
+        version: "10.6.1"
+        theme: "default"
 
 
 
