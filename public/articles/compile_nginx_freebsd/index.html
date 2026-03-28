@@ -30,6 +30,17 @@
 
 <link rel="stylesheet" href="/css/syntax.min.ca6664caa81da3e47dfe6dfbbf7ba9f3eaedcefb4f128b12d1f2afe5803551e3.css">
 
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js" defer></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "\"default\""
+    });
+  });
+</script>
+
 <meta name="generator" content="Hugo 0.159.0">
 </head>
 <body>
@@ -80,10 +91,10 @@
 
   
   <div class="navbar-right">
-    <a href="https://github.com/mparvin" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>
-      </svg>
+    <a href="https://github.com/mparvin" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>
+</svg>
+
       GitHub
     </a>
   </div>
@@ -105,15 +116,6 @@
           Home
         </a>
       </li>
-    </ul>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-section-title">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-      My Projects
-    </div>
-    <ul class="sidebar-nav">
-      
     </ul>
   </div>
   <div class="sidebar-section">
@@ -175,8 +177,8 @@
 <div class="page-header">
   <h1>Compile nginx on FreeBSD</h1><p class="page-description">By following these steps, you will successfully install and configure NGinx on your FreeBSD system.</p>
   <div class="page-meta">
-    <span class="meta-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+    <span class="meta-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+
       2 min read
     </span>
   </div>
@@ -190,99 +192,199 @@
 <li>Install PCRE (Perl Compatible Regular Expressions) by running the following command:</li>
 </ol>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">pkg_add pcre</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pkg_add pcre</span></span></code></pre></div>
 </div>
 <p>When we haven&rsquo;t <code>pcre</code> on our system, we will get the following error:</p>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-" data-lang="">./configure: error: the HTTP rewrite module requires the PCRE library.
-You can either disable the module by using --without-http_rewrite_module
-option, or install the PCRE library into the system, or build the PCRE library
-statically from the source with nginx by using --with-pcre=<path> option.</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">text</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">./configure: error: the HTTP rewrite module requires the PCRE library.
+</span></span><span class="line"><span class="cl">You can either disable the module by using --without-http_rewrite_module
+</span></span><span class="line"><span class="cl">option, or install the PCRE library into the system, or build the PCRE library
+</span></span><span class="line"><span class="cl">statically from the source with nginx by using --with-pcre=&lt;path&gt; option.</span></span></code></pre></div>
 </div>
 <ol start="2">
 <li>Proceed to install wget using the following command:</li>
 </ol>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">pkg_add wget</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pkg_add wget</span></span></code></pre></div>
 </div>
 <ol start="3">
 <li>Download the NGinx source code from the official website. Use the wget command to retrieve the source code file:</li>
 </ol>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">wget https://nginx.org/download/nginx-1.17.0.tar.gz</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wget https://nginx.org/download/nginx-1.17.0.tar.gz</span></span></code></pre></div>
 </div>
 <ol start="4">
 <li>Extract the downloaded file using the following command:</li>
 </ol>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">tar xzvf nginx-1.17.0.tar.gz</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">tar xzvf nginx-1.17.0.tar.gz</span></span></code></pre></div>
 </div>
 <ol start="5">
 <li>Configure the Makefile for NGinx by navigating into the extracted directory and running the configure script with the desired parameters:</li>
 </ol>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">cd nginx-1.17.0
-./configure --sbin-path=/usr/local/sbin/nginx \
-              --conf-path=/etc/nginx/nginx.conf \
-              --pid-path=/var/run/nginx.pid \
-              --with-http_ssl_module \
-              --http-log-path=/var/log/nginx.log \
-              --error-log-path=/var/log/nginx-error.log \
-              --http-fastcgi-temp-path=/var/tmp/fastcgi_tmp \
-              --http-proxy-temp-path=/var/tmp/proxy_tmp \
-              --http-client-body-temp-path=/var/tmp/client_body_temp \
-              --with-http_stub_status_module \
-              --user=www --group=www</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> nginx-1.17.0
+</span></span><span class="line"><span class="cl">./configure --sbin-path<span class="o">=</span>/usr/local/sbin/nginx <span class="se">\
+</span></span></span><span class="line"><span class="cl">              --conf-path<span class="o">=</span>/etc/nginx/nginx.conf <span class="se">\
+</span></span></span><span class="line"><span class="cl">              --pid-path<span class="o">=</span>/var/run/nginx.pid <span class="se">\
+</span></span></span><span class="line"><span class="cl">              --with-http_ssl_module <span class="se">\
+</span></span></span><span class="line"><span class="cl">              --http-log-path<span class="o">=</span>/var/log/nginx.log <span class="se">\
+</span></span></span><span class="line"><span class="cl">              --error-log-path<span class="o">=</span>/var/log/nginx-error.log <span class="se">\
+</span></span></span><span class="line"><span class="cl">              --http-fastcgi-temp-path<span class="o">=</span>/var/tmp/fastcgi_tmp <span class="se">\
+</span></span></span><span class="line"><span class="cl">              --http-proxy-temp-path<span class="o">=</span>/var/tmp/proxy_tmp <span class="se">\
+</span></span></span><span class="line"><span class="cl">              --http-client-body-temp-path<span class="o">=</span>/var/tmp/client_body_temp <span class="se">\
+</span></span></span><span class="line"><span class="cl">              --with-http_stub_status_module <span class="se">\
+</span></span></span><span class="line"><span class="cl">              --user<span class="o">=</span>www --group<span class="o">=</span>www</span></span></code></pre></div>
 </div>
 <ol start="6">
 <li>Proceed to compile and install NGinx by running the following commands:</li>
 </ol>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">make && make install</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">make <span class="o">&amp;&amp;</span> make install</span></span></code></pre></div>
 </div>
 <ol start="7">
 <li>Once the installation is complete, start NGinx using the following command:</li>
 </ol>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">/usr/local/sbin/nginx</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">/usr/local/sbin/nginx</span></span></code></pre></div>
 </div>
 <p>If you need to restart NGinx at any point, use the following command:</p>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">kill -HUP $(head -1 /var/run/nginx.pid)</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">kill</span> -HUP <span class="k">$(</span>head -1 /var/run/nginx.pid<span class="k">)</span></span></span></code></pre></div>
 </div>
 <p>To stop NGinx, execute the following command:</p>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">kill -QUIT $(cat /var/run/nginx.pid)</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">kill</span> -QUIT <span class="k">$(</span>cat /var/run/nginx.pid<span class="k">)</span></span></span></code></pre></div>
 </div>
 <h3 id="adding-service">Adding service</h3>
 <p>To ensure NGinx starts automatically on system boot and can be managed as a service, you can add it to the FreeBSD service management system. Follow these steps:</p>
@@ -290,89 +392,139 @@ statically from the source with nginx by using --with-pcre=<path> option.</code>
 <li>Create a file named nginx in the /usr/local/etc/rc.d/ directory. Use the following command to create the file</li>
 </ol>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">vi /usr/local/etc/rc.d/nginx</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vi /usr/local/etc/rc.d/nginx</span></span></code></pre></div>
 </div>
 <p>and put following content on it:</p>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">#!/bin/sh
-
-# PROVIDE: nginx
-# REQUIRE: LOGIN cleanvar
-# KEYWORD: shutdown
-
-. /etc/rc.subr
-
-name="nginx"
-rcvar="nginx_enable"
-
-start_cmd="${name}_start"
-stop_cmd="${name}_stop"
-reload_cmd="${name}_reload"
-
-load_rc_config $name
-
-# NGinx binary path
-nginx_bin="/usr/local/sbin/nginx"
-
-# NGinx configuration file
-nginx_conf="/etc/nginx/nginx.conf"
-
-# NGinx PID file
-nginx_pid="/var/run/nginx.pid"
-
-command="/usr/sbin/daemon"
-
-command_args="-r -P $nginx_pid $nginx_bin -c $nginx_conf"
-
-nginx_start()
-{
-    ${command} ${command_args}
-}
-
-nginx_stop()
-{
-    kill -QUIT $(cat $nginx_pid)
-}
-
-nginx_reload()
-{
-    kill -HUP $(cat $nginx_pid)
-}
-
-run_rc_command "$1"</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/sh
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># PROVIDE: nginx</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># REQUIRE: LOGIN cleanvar</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># KEYWORD: shutdown</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">. /etc/rc.subr
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">name</span><span class="o">=</span><span class="s2">&#34;nginx&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">rcvar</span><span class="o">=</span><span class="s2">&#34;nginx_enable&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">start_cmd</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">_start&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">stop_cmd</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">_stop&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">reload_cmd</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">_reload&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">load_rc_config <span class="nv">$name</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># NGinx binary path</span>
+</span></span><span class="line"><span class="cl"><span class="nv">nginx_bin</span><span class="o">=</span><span class="s2">&#34;/usr/local/sbin/nginx&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># NGinx configuration file</span>
+</span></span><span class="line"><span class="cl"><span class="nv">nginx_conf</span><span class="o">=</span><span class="s2">&#34;/etc/nginx/nginx.conf&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># NGinx PID file</span>
+</span></span><span class="line"><span class="cl"><span class="nv">nginx_pid</span><span class="o">=</span><span class="s2">&#34;/var/run/nginx.pid&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">command</span><span class="o">=</span><span class="s2">&#34;/usr/sbin/daemon&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">command_args</span><span class="o">=</span><span class="s2">&#34;-r -P </span><span class="nv">$nginx_pid</span><span class="s2"> </span><span class="nv">$nginx_bin</span><span class="s2"> -c </span><span class="nv">$nginx_conf</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">nginx_start<span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="si">${</span><span class="nv">command</span><span class="si">}</span> <span class="si">${</span><span class="nv">command_args</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">nginx_stop<span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">kill</span> -QUIT <span class="k">$(</span>cat <span class="nv">$nginx_pid</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">nginx_reload<span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">kill</span> -HUP <span class="k">$(</span>cat <span class="nv">$nginx_pid</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">run_rc_command <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span></span></span></code></pre></div>
 </div>
 <ol start="2">
 <li>Enable service</li>
 </ol>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">sysrc nginx_enable=YES</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sysrc <span class="nv">nginx_enable</span><span class="o">=</span>YES</span></span></code></pre></div>
 </div>
 <ol start="3">
 <li>Start nginx</li>
 </ol>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">service nginx start</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">service nginx start</span></span></code></pre></div>
 </div>
 <p>To <code>stop</code>, <code>start</code> and <code>reload</code> service use the following commands:</p>
 
-<div class="highlight">
-  <pre tabindex="0" class="chroma">
-    <code class="language-shell" data-lang="shell">service nginx start
-service nginx stop
-service nginx reload</code>
-  </pre>
+<div class="code-block-wrapper">
+  <div class="code-block-header">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <span class="code-block-lang">shell</span>
+    </div>
+    <button class="code-block-copy" aria-label="Copy code">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      Copy
+    </button>
+  </div>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">service nginx start
+</span></span><span class="line"><span class="cl">service nginx stop
+</span></span><span class="line"><span class="cl">service nginx reload</span></span></code></pre></div>
 </div>
 
 </div>
@@ -381,27 +533,6 @@ service nginx reload</code>
   
 
   
-  
-  <div class="card">
-    <div class="card-header">
-      <span class="card-title">Quick Links</span>
-      <svg class="card-title-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-    </div>
-    <ul class="card-list">
-      <li><a href="/docs/">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-        <span>Documentation</span>
-      </a></li>
-      <li><a href="/blog/">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
-        <span>Blog</span>
-      </a></li>
-      <li><a href="/kb/">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>
-        <span>Knowledge Base</span>
-      </a></li>
-    </ul>
-  </div>
 
   
 

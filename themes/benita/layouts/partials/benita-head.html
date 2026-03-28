@@ -49,4 +49,17 @@
 <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 {{- end }}
 
+{{/* Mermaid diagram support */}}
+{{- if (.Site.Params.mermaid.enable | default false) }}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@{{ .Site.Params.mermaid.version | default "10.6.1" }}/dist/mermaid.min.js" defer></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: {{ .Site.Params.mermaid.theme | default "default" | jsonify }}
+    });
+  });
+</script>
+{{- end }}
+
 {{ hugo.Generator }}

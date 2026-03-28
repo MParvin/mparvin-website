@@ -1,0 +1,22 @@
+{{- $pag := .Paginator }}
+{{- if gt $pag.TotalPages 1 }}
+<nav class="pagination" aria-label="Pagination">
+  {{- if $pag.HasPrev }}
+  <a href="{{ $pag.Prev.URL }}" aria-label="Previous page">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </a>
+  {{- end }}
+  {{- range $pag.Pagers }}
+  {{- if eq . $pag }}
+  <span class="active" aria-current="page">{{ .PageNumber }}</span>
+  {{- else }}
+  <a href="{{ .URL }}">{{ .PageNumber }}</a>
+  {{- end }}
+  {{- end }}
+  {{- if $pag.HasNext }}
+  <a href="{{ $pag.Next.URL }}" aria-label="Next page">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </a>
+  {{- end }}
+</nav>
+{{- end }}

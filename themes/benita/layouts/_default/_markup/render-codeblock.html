@@ -1,6 +1,11 @@
 {{/* render-codeblock.html — overrides fenced code blocks in Markdown
-     Adds a header bar with language label and copy button.
+     Handles mermaid diagrams and adds a header bar with language label and copy button.
 */}}
+{{- if eq .Type "mermaid" }}
+<div class="mermaid">
+  {{- .Inner | safeHTML -}}
+</div>
+{{- else }}
 {{- $lang := .Type | default "text" }}
 {{- $filename := .Attributes.filename | default "" }}
 <div class="code-block-wrapper">
@@ -19,3 +24,4 @@
   </div>
   {{ highlight .Inner $lang "" }}
 </div>
+{{- end }}

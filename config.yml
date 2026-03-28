@@ -24,6 +24,8 @@ menu:
 
 params:
     author: Madvin
+    description: "A mix of nerd and geek, with most of my time spent around development and automation."
+    githubURL: "https://github.com/mparvin"
 
 
     defaultTheme: auto

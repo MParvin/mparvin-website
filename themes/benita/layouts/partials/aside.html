@@ -18,7 +18,7 @@
   </div>
   {{- end }}
 
-  {{/* Quick Links — from site data or params */}}
+  {{/* Quick Links — from site data */}}
   {{- $quickLinks := hugo.Data.quicklinks }}
   {{- if $quickLinks }}
   <div class="card">
@@ -44,28 +44,6 @@
         </a>
       </li>
       {{- end }}
-    </ul>
-  </div>
-  {{- else }}
-  {{/* Default quick links fallback */}}
-  <div class="card">
-    <div class="card-header">
-      <span class="card-title">Quick Links</span>
-      <svg class="card-title-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-    </div>
-    <ul class="card-list">
-      <li><a href="/docs/">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-        <span>Documentation</span>
-      </a></li>
-      <li><a href="/blog/">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
-        <span>Blog</span>
-      </a></li>
-      <li><a href="/kb/">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>
-        <span>Knowledge Base</span>
-      </a></li>
     </ul>
   </div>
   {{- end }}
