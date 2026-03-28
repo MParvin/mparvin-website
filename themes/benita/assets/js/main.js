@@ -237,7 +237,7 @@
 
     function loadSearchIndex() {
       if (searchIndex !== null) return;
-      fetch('/search-index.json')
+      fetch('/index.json')
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (data) {
           if (!data) return;

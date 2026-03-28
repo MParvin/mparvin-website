@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Madvin (Mohammad Parvin)</title>
-    <link>//localhost:1112/categories/</link>
+    <link>mparvin.me/categories/</link>
     <description>Recent content in Categories on Madvin (Mohammad Parvin)</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="//localhost:1112/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="mparvin.me/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

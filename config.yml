@@ -26,6 +26,7 @@ params:
     author: Madvin
     description: "A mix of nerd and geek, with most of my time spent around development and automation."
     githubURL: "https://github.com/mparvin"
+    enableSearch: true
 
 
     defaultTheme: auto
@@ -81,6 +82,12 @@ enableInlineShortcodes: true
 enableRobotsTXT: true
 enableEmoji: true
 pygmentsUseClasses: true
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON
 
 minify:
     disableXML: true
