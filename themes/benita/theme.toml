@@ -1,0 +1,11 @@
+name = "Benita"
+license = "MIT"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "A premium Hugo theme for DevOps-focused documentation platforms. Dark mode, 3-column layout, glassmorphism navbar, collapsible sidebar, and client-side search."
+homepage = ""
+tags = ["documentation", "devops", "dark-mode", "responsive", "search", "blog"]
+features = ["syntax-highlighting", "search", "toc", "dark-mode", "responsive"]
+min_version = "0.115.0"
+
+[author]
+  name = "Benita Theme"

@@ -1,0 +1,12 @@
+<footer class="site-footer" role="contentinfo">
+  <span>
+    &copy; {{ now.Year }} {{ .Site.Title }}.
+    {{- with .Site.Params.footerText }} {{ . }}{{- end }}
+  </span>
+  <nav class="footer-links" aria-label="Footer navigation">
+    {{- range .Site.Menus.footer }}
+    <a href="{{ .URL }}"{{ if hasPrefix .URL "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Name }}</a>
+    {{- end }}
+    <a href="/sitemap.xml">Sitemap</a>
+  </nav>
+</footer>

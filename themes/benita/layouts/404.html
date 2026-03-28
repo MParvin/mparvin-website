@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+<head>
+  {{- partial "benita-head.html" . -}}
+</head>
+<body>
+  <div class="site-wrapper">
+    {{- partial "navbar.html" . -}}
+    <div class="content-wrapper" style="justify-content:center;align-items:center;">
+      <div class="error-page">
+        <div class="error-code">404</div>
+        <h2>Page Not Found</h2>
+        <p>The page you're looking for doesn't exist or has been moved.</p>
+        <div style="margin-top:var(--sp-4);display:flex;gap:var(--sp-2);justify-content:center;">
+          <a href="{{ "/" | relURL }}" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            Go Home
+          </a>
+          <button onclick="history.back()" class="btn btn-ghost">Go Back</button>
+        </div>
+      </div>
+    </div>
+    {{- partial "footer.html" . -}}
+  </div>
+  {{- $js := resources.Get "js/main.js" | minify | fingerprint -}}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<aside class="aside-panel" aria-label="Page aside">
+
+  {{/* Table of Contents */}}
+  {{- if and .IsPage .Params.toc }}
+  <div class="card toc-wrapper">
+    <div class="card-header">
+      <span class="card-title">On This Page</span>
+      <svg class="card-title-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="8" y1="6" x2="21" y2="6"></line>
+        <line x1="8" y1="12" x2="21" y2="12"></line>
+        <line x1="8" y1="18" x2="21" y2="18"></line>
+        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+      </svg>
+    </div>
+    {{ .TableOfContents }}
+  </div>
+  {{- end }}
+
+  {{/* Quick Links — from site data or params */}}
+  {{- $quickLinks := hugo.Data.quicklinks }}
+  {{- if $quickLinks }}
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Quick Links</span>
+      <svg class="card-title-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+    </div>
+    <ul class="card-list">
+      {{- range $quickLinks }}
+      <li>
+        <a href="{{ .url }}" {{ if hasPrefix .url "http" }}target="_blank" rel="noopener noreferrer"{{ end }}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          <span>{{ .name }}</span>
+          {{- if hasPrefix .url "http" }}
+          <svg class="card-link-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          {{- end }}
+        </a>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- else }}
+  {{/* Default quick links fallback */}}
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Quick Links</span>
+      <svg class="card-title-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+    </div>
+    <ul class="card-list">
+      <li><a href="/docs/">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+        <span>Documentation</span>
+      </a></li>
+      <li><a href="/blog/">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+        <span>Blog</span>
+      </a></li>
+      <li><a href="/kb/">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12" y2="17"></line></svg>
+        <span>Knowledge Base</span>
+      </a></li>
+    </ul>
+  </div>
+  {{- end }}
+
+  {{/* Resources card */}}
+  {{- $resources := hugo.Data.resources }}
+  {{- if $resources }}
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Resources</span>
+      <svg class="card-title-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+    </div>
+    <ul class="card-list">
+      {{- range $resources }}
+      <li>
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          <span>{{ .name }}</span>
+        </a>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+
+  {{/* Promo card — optional */}}
+  {{- with .Site.Params.promoCard }}
+  <div class="card card-promo">
+    <div class="card-promo-title">{{ .title }}</div>
+    <div class="card-promo-desc">{{ .description }}</div>
+    <a href="{{ .url }}" class="btn btn-primary btn-sm"
+       {{- if hasPrefix .url "http" }} target="_blank" rel="noopener noreferrer"{{- end }}>
+      {{ .buttonText | default "Learn More" }}
+    </a>
+  </div>
+  {{- end }}
+
+</aside>

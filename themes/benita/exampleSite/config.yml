@@ -1,0 +1,50 @@
+baseURL: http://example.com/
+title: Benita Demo
+theme: benita
+
+pagination:
+  pagerSize: 10
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+params:
+  description: "A premium DevOps documentation platform built with the Benita Hugo theme."
+  githubURL: "https://github.com/yourname/benita"
+  docsURL: "/docs/"
+  enableSearch: true
+  logoText: "Benita"
+  footerText: "Built with Hugo and the Benita theme."
+  promoCard:
+    title: "New Feature"
+    description: "Explore the new collapsible sidebar with persistent state."
+    url: /docs/getting-started/
+    buttonText: "Learn More"
+
+menu:
+  sidebar:
+    - identifier: docs
+      name: Docs
+      weight: 1
+      params:
+        icon: book
+    - identifier: getting-started
+      name: Getting Started
+      parent: docs
+      url: /docs/getting-started/
+      weight: 1
+    - identifier: blog
+      name: Blog
+      url: /blog/
+      weight: 2
+      params:
+        icon: rss
+    - identifier: kb
+      name: Knowledge Base
+      url: /kb/
+      weight: 3
+      params:
+        icon: database

@@ -1,0 +1,8 @@
+- name: Hugo Documentation
+  url: https://gohugo.io/documentation/
+- name: Fuse.js Docs
+  url: https://fusejs.io/
+- name: Inter Font
+  url: https://rsms.me/inter/
+- name: JetBrains Mono
+  url: https://www.jetbrains.com/lp/mono/

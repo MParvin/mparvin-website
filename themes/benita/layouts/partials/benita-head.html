@@ -1,0 +1,52 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>
+  {{- if .IsHome -}}
+    {{ .Site.Title }}
+  {{- else -}}
+    {{ .Title }} | {{ .Site.Title }}
+  {{- end -}}
+</title>
+
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{- if .Params.noindex }}<meta name="robots" content="noindex">{{- end }}
+
+{{/* Open Graph */}}
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta name="twitter:card" content="summary">
+
+{{/* CSS via Hugo Pipes */}}
+{{- $css := resources.Get "css/main.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+
+{{/* Google Fonts — Inter + JetBrains Mono */}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+{{/* Fuse.js for client-side search */}}
+{{- if .Site.Params.enableSearch }}
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.basic.min.js" defer></script>
+{{- end }}
+
+{{/* Favicons */}}
+{{- with .Site.Params.assets.favicon }}<link rel="shortcut icon" href="{{ . }}">{{- end }}
+{{- with .Site.Params.assets.favicon16x16 }}<link rel="icon" type="image/png" sizes="16x16" href="{{ . }}">{{- end }}
+{{- with .Site.Params.assets.favicon32x32 }}<link rel="icon" type="image/png" sizes="32x32" href="{{ . }}">{{- end }}
+{{- with .Site.Params.assets.apple_touch_icon }}<link rel="apple-touch-icon" href="{{ . }}">{{- end }}
+
+{{/* Hugo syntax highlight stylesheet (GitHub Dark style) */}}
+{{ $style := resources.Get "css/syntax.css" }}
+{{- if $style }}
+{{- $style = $style | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+{{- end }}
+
+{{ hugo.Generator }}

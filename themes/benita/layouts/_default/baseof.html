@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}" dir="ltr">
+<head>
+  {{- partial "benita-head.html" . -}}
+</head>
+<body>
+  <div class="site-wrapper">
+
+    {{- partial "navbar.html" . -}}
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <div class="content-wrapper">
+      {{- partial "sidebar.html" . -}}
+
+      <main class="main-content" id="main-content">
+        {{- block "main" . }}{{- end }}
+      </main>
+
+      {{- partial "aside.html" . -}}
+    </div>
+
+    {{- partial "footer.html" . -}}
+
+  </div>
+
+  {{- $js := resources.Get "js/main.js" | minify | fingerprint -}}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+</body>
+</html>

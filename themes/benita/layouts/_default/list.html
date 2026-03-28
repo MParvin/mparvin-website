@@ -1,0 +1,75 @@
+{{- define "main" }}
+
+<div class="list-header">
+  <h1>{{ .Title }}</h1>
+  {{- with .Description }}<p class="page-description">{{ . }}</p>{{- end }}
+</div>
+
+{{- if .Content }}
+<div class="content" style="margin-bottom: var(--sp-5);">
+  {{ .Content }}
+</div>
+{{- end }}
+
+<div class="post-grid">
+  {{- range .Paginator.Pages }}
+  <article class="post-card">
+    <h2 class="post-card-title">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h2>
+    <div class="post-card-meta">
+      {{- if not .Date.IsZero }}
+      <span style="display:flex;align-items:center;gap:4px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+      </span>
+      {{- end }}
+      {{- if .ReadingTime }}
+      <span style="display:flex;align-items:center;gap:4px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        {{ .ReadingTime }} min read
+      </span>
+      {{- end }}
+    </div>
+    {{- with .Summary }}
+    <p class="post-card-summary">{{ . | plainify | truncate 200 }}</p>
+    {{- end }}
+    {{- with .Params.tags }}
+    <div class="tags">
+      {{- range . }}
+      <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="tag">{{ . }}</a>
+      {{- end }}
+    </div>
+    {{- end }}
+  </article>
+  {{- end }}
+</div>
+
+{{- template "pagination.html" . }}
+
+{{- end }}
+
+{{- define "pagination.html" }}
+{{- $pag := .Paginator }}
+{{- if gt $pag.TotalPages 1 }}
+<nav class="pagination" aria-label="Pagination">
+  {{- if $pag.HasPrev }}
+  <a href="{{ $pag.Prev.URL }}" aria-label="Previous page">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </a>
+  {{- end }}
+  {{- range $pag.Pagers }}
+  {{- if eq . $pag }}
+  <span class="active" aria-current="page">{{ .PageNumber }}</span>
+  {{- else }}
+  <a href="{{ .URL }}">{{ .PageNumber }}</a>
+  {{- end }}
+  {{- end }}
+  {{- if $pag.HasNext }}
+  <a href="{{ $pag.Next.URL }}" aria-label="Next page">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </a>
+  {{- end }}
+</nav>
+{{- end }}
+{{- end }}

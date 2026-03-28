@@ -1,0 +1,19 @@
+{{- $page := . }}
+{{- $breadcrumbs := slice }}
+
+{{- $ancestors := .Ancestors }}
+{{- range $ancestors.Reverse }}
+{{- $breadcrumbs = $breadcrumbs | append . }}
+{{- end }}
+
+{{- if gt (len $breadcrumbs) 0 }}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="{{ "/" | relURL }}">Home</a>
+  {{- range $breadcrumbs }}
+  <span class="sep" aria-hidden="true">/</span>
+  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  {{- end }}
+  <span class="sep" aria-hidden="true">/</span>
+  <span class="current" aria-current="page">{{ $page.Title }}</span>
+</nav>
+{{- end }}

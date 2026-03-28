@@ -2,31 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Madvin (Mohammad Parvin)</title>
-    <link>//localhost:1313/tags/</link>
+    <link>//localhost:1112/tags/</link>
     <description>Recent content in Tags on Madvin (Mohammad Parvin)</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Sep 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1112/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python</title>
+      <link>//localhost:1112/tags/python/</link>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1112/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>//localhost:1112/tags/security/</link>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1112/tags/security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Supply-Chain</title>
+      <link>//localhost:1112/tags/supply-chain/</link>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1112/tags/supply-chain/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Diagrams</title>
-      <link>//localhost:1313/tags/diagrams/</link>
+      <link>//localhost:1112/tags/diagrams/</link>
       <pubDate>Sat, 20 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/diagrams/</guid>
+      <guid>//localhost:1112/tags/diagrams/</guid>
       <description></description>
     </item>
     <item>
       <title>Mermaid</title>
-      <link>//localhost:1313/tags/mermaid/</link>
+      <link>//localhost:1112/tags/mermaid/</link>
       <pubDate>Sat, 20 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/mermaid/</guid>
+      <guid>//localhost:1112/tags/mermaid/</guid>
       <description></description>
     </item>
     <item>
       <title>Visualization</title>
-      <link>//localhost:1313/tags/visualization/</link>
+      <link>//localhost:1112/tags/visualization/</link>
       <pubDate>Sat, 20 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/visualization/</guid>
+      <guid>//localhost:1112/tags/visualization/</guid>
       <description></description>
     </item>
   </channel>
