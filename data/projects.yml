@@ -1,0 +1,12 @@
+projects:
+  - name: "ParsOps"
+    description: "DevOps as a Service Platform"
+    url: "https://parsops.com"
+
+  - name: "PaaS2"
+    description: "A Platform as a Service (PaaS) solution built on top of Kubernetes, designed to simplify application deployment and management for developers."
+    url: "https://paas2.ir"
+
+  - name: "Gooy.site"
+    description: "Content & DevDocs Platform."
+    url: "https://gooy.site"

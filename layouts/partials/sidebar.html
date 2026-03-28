@@ -1,0 +1,143 @@
+{{- $currentPage := . }}
+
+<aside id="sidebar" class="sidebar" role="navigation" aria-label="Site navigation">
+
+  {{- if .Site.Menus.sidebar }}
+  {{/* ── Render from Hugo sidebar menu ── */}}
+  {{- $topLevel := where .Site.Menus.sidebar "Parent" "" }}
+
+  {{- range $topLevel }}
+  {{- $children := where $.Site.Menus.sidebar "Parent" .Identifier }}
+  {{- $sectionId := .Identifier | default (.Name | urlize) }}
+
+  <div class="sidebar-section">
+    {{- if $children }}
+    {{/* Section with nested children */}}
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item" data-section="{{ $sectionId }}">
+        <button class="sidebar-nav-link" aria-expanded="false">
+          {{- partial "sidebar-icon.html" (.Params.icon | default "folder") }}
+          {{ .Name }}
+          <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+        <ul class="sidebar-sub-nav">
+          {{- range $children }}
+          <li class="sidebar-nav-item">
+            <a href="{{ .URL }}"
+               class="sidebar-nav-link{{ if eq $currentPage.RelPermalink .URL }} active{{ end }}"
+               {{- if eq $currentPage.RelPermalink .URL }} aria-current="page"{{- end }}>
+              {{ .Name }}
+            </a>
+          </li>
+          {{- end }}
+        </ul>
+      </li>
+    </ul>
+    {{- else }}
+    {{/* Top-level direct link */}}
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+        <a href="{{ .URL }}"
+           class="sidebar-nav-link{{ if eq $currentPage.RelPermalink .URL }} active{{ end }}"
+           {{- if eq $currentPage.RelPermalink .URL }} aria-current="page"{{- end }}>
+          {{- partial "sidebar-icon.html" (.Params.icon | default "file") }}
+          {{ .Name }}
+        </a>
+      </li>
+    </ul>
+    {{- end }}
+  </div>
+  {{- end }}
+
+  {{- else }}
+  {{/* ── Fallback: auto-generate from site sections ── */}}
+
+  <div class="sidebar-section">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+        <a href="{{ "/" | relURL }}"
+           class="sidebar-nav-link{{ if $currentPage.IsHome }} active{{ end }}"
+           {{- if $currentPage.IsHome }} aria-current="page"{{- end }}>
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          Home
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  {{- range .Site.Sections.ByWeight }}
+  {{- $section := . }}
+  {{- if eq ($section.Title | urlize) "contact" }}
+  {{/* Contact section: show as a single link */}}
+  <div class="sidebar-section">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+        <a href="{{ $section.RelPermalink }}"
+           class="sidebar-nav-link{{ if eq $currentPage.RelPermalink $section.RelPermalink }} active{{ end }}"
+           {{- if eq $currentPage.RelPermalink $section.RelPermalink }} aria-current="page"{{- end }}>
+          <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          {{ $section.Title }}
+        </a>
+      </li>
+    </ul>
+  </div>
+  {{- else }}
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+      {{ $section.Title }}
+    </div>
+    <ul class="sidebar-nav">
+      {{- if eq ($section.Title | urlize) "projects" }}
+      {{/* Special handling for projects: read from data file */}}
+      {{- range hugo.Data.projects.projects }}
+      <li class="sidebar-nav-item">
+        <a href="{{ .url }}"
+           class="sidebar-nav-link"
+           target="_blank" rel="noopener noreferrer">
+          {{ .name }}
+        </a>
+      </li>
+      {{- end }}
+      {{- else }}
+      {{- range $section.Pages.ByWeight }}
+      {{- $isActive := eq $currentPage.RelPermalink .RelPermalink }}
+      <li class="sidebar-nav-item">
+        <a href="{{ .RelPermalink }}"
+           class="sidebar-nav-link{{ if $isActive }} active{{ end }}"
+           {{- if $isActive }} aria-current="page"{{- end }}>
+          {{ .Title }}
+        </a>
+      </li>
+      {{- end }}
+      {{/* Sub-sections */}}
+      {{- range $section.Sections }}
+      {{- $sub := . }}
+      <li class="sidebar-nav-item" data-section="{{ $sub.Title | urlize }}">
+        <button class="sidebar-nav-link" aria-expanded="false">
+          {{ $sub.Title }}
+          <svg class="nav-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+        <ul class="sidebar-sub-nav">
+          {{- range $sub.Pages.ByWeight }}
+          {{- $isSubActive := eq $currentPage.RelPermalink .RelPermalink }}
+          <li class="sidebar-nav-item">
+            <a href="{{ .RelPermalink }}"
+               class="sidebar-nav-link{{ if $isSubActive }} active{{ end }}"
+               {{- if $isSubActive }} aria-current="page"{{- end }}>
+              {{ .Title }}
+            </a>
+          </li>
+          {{- end }}
+        </ul>
+      </li>
+      {{- end }}
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+  {{- end }}
+
+  {{- end }}
+
+</aside>

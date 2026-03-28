@@ -8,12 +8,15 @@ theme: benita
 
 menu:
     main:
+        - name: Articles
+          url: articles/
+          weight: 10
+        - name: Projects
+          url: projects/
+          weight: 20
         - name: Contact
           url: contact/
           weight: 30
-        - name: Articles
-          url: articles/
-          weight: 20
         # - name: Categories
         #   url: categories/
         #   weight: 10

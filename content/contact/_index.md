@@ -1,15 +1,7 @@
 ---
-Title: Contact
-type: list
+title: Contact
+type: contact
+description: "Get in touch via any of the channels below."
+weight: 30
 ---
-
-
-#### LinkedIn
-If you have a short message or question, drop a message via [LinkedIn](https://www.linkedin.com/in/mparvin/).
-
-
-#### Email
-For enquiries or longer messages, please [email](mailto:me@mparvin.me) me.
-
-
 

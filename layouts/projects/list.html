@@ -1,0 +1,27 @@
+{{- define "main" }}
+
+<div class="list-header">
+  <h1>{{ .Title }}</h1>
+  {{- with .Description }}<p class="page-description">{{ . }}</p>{{- end }}
+</div>
+
+{{- if .Content }}
+<div class="content" style="margin-bottom: var(--sp-5);">
+  {{ .Content }}
+</div>
+{{- end }}
+
+<div class="post-grid">
+  {{- range hugo.Data.projects.projects }}
+  <article class="post-card">
+    <h2 class="post-card-title">
+      <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
+    </h2>
+    {{- with .description }}
+    <p class="post-card-summary">{{ . }}</p>
+    {{- end }}
+  </article>
+  {{- end }}
+</div>
+
+{{- end }}

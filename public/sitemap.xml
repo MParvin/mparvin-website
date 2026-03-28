@@ -2,45 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>mparvin.me/articles/</loc>
+    <loc>//localhost:1112/articles/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>mparvin.me/</loc>
+    <loc>//localhost:1112/projects/</loc>
+  </url><url>
+    <loc>//localhost:1112/contact/</loc>
+  </url><url>
+    <loc>//localhost:1112/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>mparvin.me/tags/python/</loc>
+    <loc>//localhost:1112/tags/python/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>mparvin.me/tags/security/</loc>
+    <loc>//localhost:1112/tags/security/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>mparvin.me/articles/litellm-supply-chain-attack/</loc>
+    <loc>//localhost:1112/articles/litellm-supply-chain-attack/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>mparvin.me/tags/supply-chain/</loc>
+    <loc>//localhost:1112/tags/supply-chain/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>mparvin.me/tags/</loc>
+    <loc>//localhost:1112/tags/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>mparvin.me/tags/diagrams/</loc>
+    <loc>//localhost:1112/tags/diagrams/</loc>
     <lastmod>2025-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>mparvin.me/tags/mermaid/</loc>
+    <loc>//localhost:1112/tags/mermaid/</loc>
     <lastmod>2025-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>mparvin.me/articles/mermaid-demo/</loc>
+    <loc>//localhost:1112/articles/mermaid-demo/</loc>
     <lastmod>2025-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>mparvin.me/tags/visualization/</loc>
+    <loc>//localhost:1112/tags/visualization/</loc>
     <lastmod>2025-09-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>mparvin.me/categories/</loc>
+    <loc>//localhost:1112/categories/</loc>
   </url><url>
-    <loc>mparvin.me/articles/compile_nginx_freebsd/</loc>
+    <loc>//localhost:1112/articles/compile_nginx_freebsd/</loc>
   </url><url>
-    <loc>mparvin.me/contact/</loc>
-  </url><url>
-    <loc>mparvin.me/articles/article/</loc>
+    <loc>//localhost:1112/articles/article/</loc>
   </url>
 </urlset>
